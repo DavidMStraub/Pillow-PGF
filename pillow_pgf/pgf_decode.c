@@ -1,5 +1,6 @@
 #include "Python.h"
 #include "../Pillow-PGF/Wrapper/libpgf.h"
+#include "Imaging.h"
 
 static PyObject* decode(PyObject* self, PyObject* args)
 {
@@ -48,7 +49,7 @@ struct ImagingCodecStateInstance {
 */
 int ImagingPgfDecode(Imaging im, ImagingCodecState state, UINT8* buf, Py_ssize_t bytes) {
 	struct CPGFImage *pgf = newPGFImage();		// needs Wrapper.lib
-	struct CPGFFileStream *stream(state-fd);	// needs Wrapper.lib
+	struct CPGFFileStream *stream(state->fd);	// needs Wrapper.lib
 
 	// optional PGF encoder configuration
 	configureDecoder(pgf, true); // true: use openMP (if codec is compiled with openMP)
