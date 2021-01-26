@@ -15,23 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="libpgf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PGFimage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PGFplatform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PGFstream.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PGFtypes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <Library Include="libpgf.lib" />
     <Library Include="libpgfd.lib" />
   </ItemGroup>
@@ -39,5 +22,10 @@
     <ClCompile Include="libpgf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\libpgf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
