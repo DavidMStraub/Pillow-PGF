@@ -1,5 +1,5 @@
 #include "Python.h"
-#include "../Pillow-PGF/Wrapper/libpgf.h"
+#include "../include/libpgf.h"
 #include "Imaging.h"
 
 static PyObject* decode(PyObject* self, PyObject* args)
