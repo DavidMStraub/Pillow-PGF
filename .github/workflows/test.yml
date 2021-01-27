@@ -7,11 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
     - name: Install dependencies
-      run: pip install Pillow
+      run: sudo apt install python3-dev python3-pil
     - name: Build
-      run: python setup.py build
+      run: python3 setup.py build
