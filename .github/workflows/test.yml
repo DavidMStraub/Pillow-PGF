@@ -11,5 +11,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.x'
+    - name: Install dependencies
+      run: pip install Pillow
     - name: Build
       run: python setup.py build
