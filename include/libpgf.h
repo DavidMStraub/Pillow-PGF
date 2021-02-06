@@ -13,6 +13,31 @@ typedef int HANDLE;
 #ifdef __cplusplus
 extern "C" {
 #endif
+	//-------------------------------------------------------------------------------
+	//	Defines -- Adobe image modes.
+	//-------------------------------------------------------------------------------
+	#define ImageModeBitmap				0
+	#define ImageModeGrayScale			1
+	#define ImageModeIndexedColor		2
+	#define ImageModeRGBColor			3
+	#define ImageModeCMYKColor			4
+	#define ImageModeHSLColor			5
+	#define ImageModeHSBColor			6
+	#define ImageModeMultichannel		7
+	#define ImageModeDuotone			8
+	#define ImageModeLabColor			9
+	#define ImageModeGray16				10		// 565
+	#define ImageModeRGB48				11
+	#define ImageModeLab48				12
+	#define ImageModeCMYK64				13
+	#define ImageModeDeepMultichannel	14
+	#define ImageModeDuotone16			15
+	// pgf extension
+	#define ImageModeRGBA				17
+	#define ImageModeGray32				18		// MSB is 0 (can be interpreted as signed 15.16 fixed point format)
+	#define ImageModeRGB12				19
+	#define ImageModeRGB16				20
+	#define ImageModeUnknown			255
 
 	typedef struct CPGFImage CPGFImage;
 	typedef struct CPGFFileStream CPGFFileStream;

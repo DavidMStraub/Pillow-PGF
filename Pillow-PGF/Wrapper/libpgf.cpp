@@ -1,5 +1,5 @@
 //#include <Windows.h>
-#include "..\..\include\PGFimage.h"
+#include "PGFimage.h"
 #include "..\..\include\libpgf.h"
 
 extern "C" {

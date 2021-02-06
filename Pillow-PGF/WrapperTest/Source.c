@@ -1,6 +1,6 @@
 #include "..\..\include\libpgf.h"
 #include <stdio.h>
-#include <Windows.h>
+//#include <Windows.h>
 
 // Test program in C
 

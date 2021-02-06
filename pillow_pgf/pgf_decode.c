@@ -2,6 +2,8 @@
 #include "../include/libpgf.h"
 #include "Imaging.h"
 
+// https://pillow.readthedocs.io/en/5.1.x/handbook/writing-your-own-file-decoder.html
+
 static PyObject* decode(PyObject* self, PyObject* args)
 {
     printf("Hello World\n");
@@ -47,34 +49,29 @@ struct ImagingCodecStateInstance {
 };
 
 */
-int ImagingPgfDecode(Imaging im, ImagingCodecState state, UINT8* buf, Py_ssize_t bytes) {
-	struct CPGFImage *pgf = newPGFImage();		// needs Wrapper.lib
-	struct CPGFFileStream *stream(state->fd);	// needs Wrapper.lib
+int ImagingPgfDecode(Imaging im, ImagingCodecState state, UINT8* buf, Py_ssize_t bytes, int stride) {
+	struct CPGFImage *pgf = newPGFImage();							// needs clibpgf.lib
+	struct CPGFFileStream *stream = newPGFFileStream(state->fd);	// needs clibpgf.lib
 
 	// optional PGF encoder configuration
 	configureDecoder(pgf, true); // true: use openMP (if codec is compiled with openMP)
 
-	try {
-		// open pgf image
-		unit64_t startpos = getPos(stream);
-		openPGFImage(pgf, stream);
+	// open pgf image
+	uint64_t startpos = getPos(stream);
+	openPGFImage(pgf, stream);
 
-		// read entire file down to level 0
-		readPGFImage(pgf);
-		unit64_t sourceSize = getPos(stream) - startpos;
+	// read entire file down to level 0
+	readPGFImage(pgf);
+	uint64_t sourceSize = getPos(stream) - startpos;
 
-	} catch (IOException& e) {
-		deletePGFFileStream(stream);
-		deletePGFImage(pgf);
-		return -1;
-	}
 
 	uint8_t mode = getMode(pgf);
 
-	// copy image to buffer
-	if (mode == ImageModeRGB) {
-		int map[] = { 2, 1, 0 };
-		copyBitmap(pgf, buf, bytes, stride, map);
+	// copy image to buffer (BGR mode)
+	if (mode == ImageModeRGBColor) {
+		//int map[] = { 2, 1, 0 }; // BGR to RGB
+		int map[] = { 0, 1, 2 }; // BGR to BGR
+		copyBitmap(pgf, buf, bytes, stride, 24, map);
 	}
 
 	// update color table if image is indexed or bitmap
