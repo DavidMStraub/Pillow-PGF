@@ -1,6 +1,6 @@
 //#include <Windows.h>
 #include "PGFimage.h"
-#include "..\..\include\libpgf.h"
+#include "libpgf.h"
 
 extern "C" {
 	CPGFImage* newPGFImage() {
@@ -42,5 +42,9 @@ extern "C" {
 	uint64_t getPos(CPGFFileStream* stream) {
 		return stream->GetPos();
 	}
+	void setPos(CPGFFileStream* stream, short posMode, int64_t posOff) {
+		stream->SetPos(posMode, posOff);
+	}
+
 }
 

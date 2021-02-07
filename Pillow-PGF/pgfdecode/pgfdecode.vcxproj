@@ -272,11 +272,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\kauai\source\repos\git\Pillow\src\libImaging;$(ProgramFiles)\Microsoft Visual Studio\Shared\Python37_64\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\kauai\source\repos\git\Pillow\src\libImaging;$(ProgramFiles)\Microsoft Visual Studio\Shared\Python37_64\include;C:\Users\kauai\source\repos\git\Pillow-PGF\clibpgf</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\kauai\source\repos\git\Pillow\src\libImaging;$(ProgramFiles)\Microsoft Visual Studio\Shared\Python37_64\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\kauai\source\repos\git\Pillow\src\libImaging;$(ProgramFiles)\Microsoft Visual Studio\Shared\Python37_64\include;C:\Users\kauai\source\repos\git\Pillow-PGF\clibpgf</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -565,7 +565,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Library Include="..\..\libpgf\libpgf.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\libpgf\libpgfd.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\clibpgf\libpgf.cpp" />
     <ClCompile Include="..\..\pillow_pgf\pgf_decode.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\clibpgf\libpgf.h" />
+    <ClInclude Include="..\..\clibpgf\PGFimage.h" />
+    <ClInclude Include="..\..\clibpgf\PGFplatform.h" />
+    <ClInclude Include="..\..\clibpgf\PGFstream.h" />
+    <ClInclude Include="..\..\clibpgf\PGFtypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

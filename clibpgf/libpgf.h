@@ -39,6 +39,13 @@ extern "C" {
 	#define ImageModeRGB16				20
 	#define ImageModeUnknown			255
 
+	//-------------------------------------------------------------------------------
+	// setPos modes
+	//-------------------------------------------------------------------------------
+	#define FSFromStart		FILE_BEGIN				// 0
+	#define FSFromCurrent	FILE_CURRENT			// 1
+	#define FSFromEnd		FILE_END				// 2
+
 	typedef struct CPGFImage CPGFImage;
 	typedef struct CPGFFileStream CPGFFileStream;
 
@@ -55,6 +62,7 @@ extern "C" {
 	CPGFFileStream* newPGFFileStream(HANDLE fd);
 	void deletePGFFileStream(CPGFFileStream* stream);
 	uint64_t getPos(CPGFFileStream* stream);
+	void setPos(CPGFFileStream* stream, short posMode, int64_t posOff);
 
 #ifdef __cplusplus
 }

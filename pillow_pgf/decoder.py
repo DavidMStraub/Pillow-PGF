@@ -4,7 +4,7 @@ from typing import Tuple
 
 from PIL import Image, ImageFile
 
-import pgf_decode
+import libpgf
 
 
 class PGFDecoder(ImageFile.PyDecoder):

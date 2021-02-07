@@ -1,5 +1,5 @@
 #include "Python.h"
-#include "../include/libpgf.h"
+#include "libpgf.h"
 #include "Imaging.h"
 
 // https://pillow.readthedocs.io/en/5.1.x/handbook/writing-your-own-file-decoder.html
@@ -8,6 +8,7 @@ static PyObject* decode(PyObject* self, PyObject* args)
 {
     printf("Hello World\n");
     return Py_None;
+	//return decodePGF(args.fd, args.dst, args.bytes, args.stride);
 }
 
 
@@ -26,45 +27,26 @@ static struct PyModuleDef _decode = {
 };
 
 
-PyMODINIT_FUNC PyInit__decode(void)
+PyMODINIT_FUNC PyInit_libpgf(void)
 {
     return PyModule_Create(&_decode);
 }
 
-/*
-* https://github.com/python-pillow/Pillow/blob/master/src/libImaging/Imaging.h
-typedef struct ImagingCodecStateInstance *ImagingCodecState;
-struct ImagingCodecStateInstance {
-	int count;
-	int state;
-	int errcode;
-	int x, y;
-	int ystep;
-	int xsize, ysize, xoff, yoff;
-	ImagingShuffler shuffle;
-	int bits, bytes;
-	UINT8 *buffer;
-	void *context;
-	PyObject *fd;
-};
-
-*/
-int ImagingPgfDecode(Imaging im, ImagingCodecState state, UINT8* buf, Py_ssize_t bytes, int stride) {
-	struct CPGFImage *pgf = newPGFImage();							// needs clibpgf.lib
-	struct CPGFFileStream *stream = newPGFFileStream(state->fd);	// needs clibpgf.lib
+int decodePGF(HANDLE fd, UINT8* buf, Py_ssize_t bytes, int stride) {
+	struct CPGFImage *pgf = newPGFImage();
+	struct CPGFFileStream *stream = newPGFFileStream(fd);
 
 	// optional PGF encoder configuration
 	configureDecoder(pgf, true); // true: use openMP (if codec is compiled with openMP)
 
 	// open pgf image
+	setPos(stream, FSFromStart, 0);
 	uint64_t startpos = getPos(stream);
 	openPGFImage(pgf, stream);
 
 	// read entire file down to level 0
 	readPGFImage(pgf);
 	uint64_t sourceSize = getPos(stream) - startpos;
-
-
 	uint8_t mode = getMode(pgf);
 
 	// copy image to buffer (BGR mode)
@@ -95,6 +77,6 @@ int ImagingPgfDecode(Imaging im, ImagingCodecState state, UINT8* buf, Py_ssize_t
     return 0;
 }
 
-int ImagingPgfEncode(Imaging im, ImagingCodecState state, UINT8* buf, int bytes) {
+int encodePGF(HANDLE fd, UINT8* buf, Py_ssize_t bytes, int stride) {
     return 0;
 }
