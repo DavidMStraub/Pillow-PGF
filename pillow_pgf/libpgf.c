@@ -32,7 +32,7 @@ PyMODINIT_FUNC PyInit_libpgf(void)
     return PyModule_Create(&_decode);
 }
 
-int decodePGF(HANDLE fd, UINT8* buf, Py_ssize_t bytes, int stride) {
+static int decodePGF(HANDLE fd, UINT8* buf, Py_ssize_t bytes, int stride) {
 	struct CPGFImage *pgf = newPGFImage();
 	struct CPGFFileStream *stream = newPGFFileStream(fd);
 
@@ -77,6 +77,6 @@ int decodePGF(HANDLE fd, UINT8* buf, Py_ssize_t bytes, int stride) {
     return 0;
 }
 
-int encodePGF(HANDLE fd, UINT8* buf, Py_ssize_t bytes, int stride) {
+static int encodePGF(HANDLE fd, UINT8* buf, Py_ssize_t bytes, int stride) {
     return 0;
 }
