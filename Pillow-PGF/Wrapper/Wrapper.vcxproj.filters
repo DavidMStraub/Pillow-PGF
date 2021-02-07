@@ -19,13 +19,13 @@
     <Library Include="libpgfd.lib" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libpgf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\include\libpgf.h">
+    <ClInclude Include="..\..\clibpgf\libpgf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\clibpgf\libpgf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

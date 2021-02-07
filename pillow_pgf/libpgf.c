@@ -1,5 +1,5 @@
 #include "Python.h"
-#include "../include/libpgf.h"
+#include "libpgf.h"
 #include "Imaging.h"
 
 // https://pillow.readthedocs.io/en/5.1.x/handbook/writing-your-own-file-decoder.html
@@ -26,7 +26,7 @@ static struct PyModuleDef _decode = {
 };
 
 
-PyMODINIT_FUNC PyInit__decode(void)
+PyMODINIT_FUNC PyInit_libpgf(void)
 {
     return PyModule_Create(&_decode);
 }

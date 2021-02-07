@@ -1,6 +1,6 @@
 //#include <Windows.h>
 #include "PGFimage.h"
-#include "..\..\include\libpgf.h"
+#include "libpgf.h"
 
 extern "C" {
 	CPGFImage* newPGFImage() {

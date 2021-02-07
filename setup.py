@@ -4,12 +4,12 @@ from setuptools import setup, find_packages, Extension
 
 # run this setup: python setup.py build
 #https://docs.python.org/3/extending/building.html
-extension = Extension("pgf_decode", 
+extension = Extension("libpgf", 
                       define_macros=[('WIN64', '1')],
-                      include_dirs=["../Pillow/src/libImaging"],
-                      libraries=["clibpgf.lib"],
+                      include_dirs=["../Pillow/src/libImaging", "clibpgf"],
+                      libraries=["libpgf"],
                       library_dirs=["libpgf"],
-                      sources=["pillow_pgf/pgf_decode.c"])
+                      sources=["pillow_pgf/libpgf.c", "clibpgf/libpgf.cpp"])
 
 
 setup(

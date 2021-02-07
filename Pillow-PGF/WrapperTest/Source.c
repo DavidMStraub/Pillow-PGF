@@ -1,4 +1,4 @@
-#include "..\..\include\libpgf.h"
+#include "libpgf.h"
 #include <stdio.h>
 //#include <Windows.h>
 

@@ -145,10 +145,12 @@
       </Command>
     </CustomBuildStep>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(SolutionDir)..\libpgf\"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy clibpgf</Message>
+      <Message>
+      </Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -160,10 +162,10 @@
     </Library>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="libpgf.cpp" />
+    <ClInclude Include="..\..\clibpgf\libpgf.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\libpgf.h" />
+    <ClCompile Include="..\..\clibpgf\libpgf.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
