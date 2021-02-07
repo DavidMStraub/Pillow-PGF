@@ -46,7 +46,10 @@ class PGFImageFile(ImageFile.ImageFile):
 
         self.mode = mode
 
-        args = (pre_header, header, post_header)
+        stride = (mode * width + 7) / 8
+        buffer_size = stride * height
+
+        args = (buffer_size, stride)
         self.tile = [("PGF", (0, 0) + self.size, 8 + header_size, args)]
 
 

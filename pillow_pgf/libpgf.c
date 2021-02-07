@@ -20,7 +20,7 @@ static PyMethodDef pgfMethods[] = {
 
 static struct PyModuleDef _decode = {
     PyModuleDef_HEAD_INIT,
-    "pgf_decode",
+    "libpgf",
     "PGF Decode",
     -1,
     pgfMethods

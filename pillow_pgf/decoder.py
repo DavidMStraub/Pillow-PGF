@@ -12,8 +12,8 @@ class PGFDecoder(ImageFile.PyDecoder):
 
     def decode(self, buffer) -> Tuple[int, int]:
         """Decode a chunk of the image."""
-        (pre_header, header, post_header) = self.args
-        self.set_as_raw(pgf_decode.decode(buffer, pre_header, header, post_header))
+        (buffer_size, stride) = self.args
+        self.set_as_raw(libpgf.decode(self.fd, self.im, buffer_size, stride))
         return -1, 0
 
 
