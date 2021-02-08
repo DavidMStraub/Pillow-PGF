@@ -46,7 +46,7 @@ class PGFImageFile(ImageFile.ImageFile):
 
         self.mode = mode
 
-        stride = (mode * width + 7) / 8
+        stride = (bits_per_channel * channels * width + 7) / 8
         buffer_size = stride * height
 
         args = (buffer_size, stride)
