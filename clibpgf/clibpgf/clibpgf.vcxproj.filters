@@ -15,32 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="libpgf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="libpgf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <Library Include="..\..\libpgf\libpgf.lib" />
     <Library Include="..\..\libpgf\libpgfd.lib" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\clibpgf\libpgf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\pillow_pgf\pgf_decode.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\clibpgf\libpgf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\clibpgf\PGFimage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\clibpgf\PGFplatform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\clibpgf\PGFstream.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\clibpgf\PGFtypes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

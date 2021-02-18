@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9aa81422-7920-4d1e-a540-3f2605f1c082}</ProjectGuid>
-    <RootNamespace>Wrapper</RootNamespace>
+    <ProjectGuid>{9f66389a-cf6f-428e-89db-ad629c9249ae}</ProjectGuid>
+    <RootNamespace>WrapperTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>clibpgf</ProjectName>
+    <ProjectName>test</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,13 +41,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -79,11 +79,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\clibpgf;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <CustomBuildAfterTargets>
-    </CustomBuildAfterTargets>
+    <IncludePath>..\clibpgf;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -119,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,6 +134,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,32 +142,14 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <CustomBuildStep>
-      <Command>
-      </Command>
-    </CustomBuildStep>
-    <PostBuildEvent>
-      <Command>
-      </Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>
-      </Message>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Library Include="libpgf.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="libpgfd.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </Library>
+    <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\clibpgf\libpgf.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\clibpgf\libpgf.cpp" />
+    <ProjectReference Include="..\clibpgf\clibpgf.vcxproj">
+      <Project>{9aa81422-7920-4d1e-a540-3f2605f1c082}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9f66389a-cf6f-428e-89db-ad629c9249ae}</ProjectGuid>
-    <RootNamespace>WrapperTest</RootNamespace>
+    <ProjectGuid>{9aa81422-7920-4d1e-a540-3f2605f1c082}</ProjectGuid>
+    <RootNamespace>Wrapper</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>test</ProjectName>
+    <ProjectName>clibpgf</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,13 +41,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -79,11 +79,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\kauai\source\repos\git\Pillow-PGF\clibpgf;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\libpgf;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Users\kauai\source\repos\git\Pillow-PGF\clibpgf;$(IncludePath)</IncludePath>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <IncludePath>..\..\libpgf;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -119,7 +121,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,7 +135,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard_C>stdc11</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,14 +142,32 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wrapper\Wrapper.vcxproj">
-      <Project>{9aa81422-7920-4d1e-a540-3f2605f1c082}</Project>
-    </ProjectReference>
+    <ClCompile Include="libpgf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.c" />
+    <ClInclude Include="libpgf.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\libpgf\libpgf.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\libpgf\libpgfd.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
